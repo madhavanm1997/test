@@ -13,10 +13,14 @@ public class streamTest {
         //Array to using stream
         int[] a = {2, 1, 4, 2, 8, 9, 6};
         System.out.println(".....Array to using stream.....");
-        IntStream streamArray1 = Arrays.stream(a);
+        OptionalInt integer = Arrays.stream(a)
+                .max();
         //System.out.println("streamArray1:: " + streamArray1.max()); // throw a error if it is use..
-        OptionalInt inter = streamArray1.max();
-        System.out.println("inter:: " + inter.getAsInt());
+        System.out.println("integer:: " + integer);
+        System.out.println("integer:: " + integer.getAsInt());
+        int ab= Arrays.stream(a)
+                .max()
+                .getAsInt();
 
         //List to using stream
         System.out.println();
@@ -26,29 +30,38 @@ public class streamTest {
         Stream<Integer> streamList1 = list1.stream();
         System.out.println("streamList:: " + streamList1.count());
 
+
         //Stream map
         System.out.println();
         System.out.println(".....Stream map.....");
-        list1.stream().map(n -> n * n).forEach(System.out::println);
-        List listMap = list1.stream().map(n -> n * 2).collect(Collectors.toList());
+        list1.stream()
+                .map(n -> n * n)
+                .forEach(System.out::println);
+        List listMap = list1.stream()
+                .map(n -> n * 2)
+                .collect(Collectors.toList());
         System.out.println();
 
         //stream filter
         System.out.println();
         System.out.println(".....Stream filter.....");
-        List listFilter = list1.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+        List listFilter = list1.stream()
+                .filter(n -> n % 2 == 0)
+                .collect(Collectors.toList());
         System.out.println("listFilter:: " + listFilter);
 
         //stream sorted
         System.out.println();
         System.out.println(".....Stream sorted....");
-        List<Integer> listSorted = list1.stream().sorted().collect(Collectors.toList());
-        System.out.println("listSorted:: "+listSorted);
+        List<Integer> listSorted = list1.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println("listSorted:: " + listSorted);
 
         //stream reduce
         System.out.println();
         System.out.println(".....Stream Reduce.....");
-        System.out.println(list1.stream().reduce(0,(c,b)->c+b));
-        //def de=7;
+        System.out.println(list1.stream().reduce(0, (c, b) -> c + b));
+
     }
 }
