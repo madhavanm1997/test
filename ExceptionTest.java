@@ -3,14 +3,13 @@ package java8;
 import java.util.Scanner;
 
 public class ExceptionTest {
-    public static void main(String[] args) throws ArrayIndexOutOfBoundsException {
+    public static void main(String[] args) {
         int a = 0, b = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a div: ");
         a = scanner.nextInt();
         try {
             throw new ArithmeticException("TEST");
-
         } catch (Exception e) {
             System.out.println("e: " + e);
             System.out.println("e.getMessage(): " + e.getMessage());
@@ -24,11 +23,23 @@ public class ExceptionTest {
             //b = 5 / a; //throw a arithmetic error
             b = c[7]; //OutofBoundException error
             System.out.println("a: " + a);
-        } catch (ArithmeticException e) {
+        } //catch (ArithmeticException e) {
+        catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("e.getMessage(): " + e.getMessage());
             System.out.println("e: " + e);
         } finally {
             System.out.println("b: " + b);
         }
+         try {
+        System.out.println(calculate(a));
+        } catch (ArithmeticException e) {
+            System.out.println("e: " + e);
+        }
+    }
+
+    public static int calculate(int a) /*throws ArithmeticException*/ {
+        System.out.println("calculate....");
+        int b = 5;
+        return b / a;
     }
 }
