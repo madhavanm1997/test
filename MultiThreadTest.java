@@ -17,5 +17,17 @@ public class MultiThreadTest {
             System.out.println("MainRunnable: " + a);
         }
 
+        //runnable interface using a Lambda
+        Runnable runnable = () -> {
+            for (int c = 1; c <= 5; c++)
+                System.out.println("Thread: " + Thread.currentThread().getId());
+        };
+        Thread t1 = new Thread(runnable);
+        t1.start();
+        for (int d = 1; d <= 10; d++) {
+            System.out.println("d: " + d);
+        }
+
+
     }
 }
