@@ -28,6 +28,5 @@ public class MultiThreadTest {
             System.out.println("d: " + d);
         }
 
-
     }
 }
